@@ -1,0 +1,1 @@
+print('Ardipithecus','Australopithecus','Homo habilis','Homo erectus','Neanderthal','Homo sapiens', sep=' => ')
