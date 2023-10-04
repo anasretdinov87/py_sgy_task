@@ -24,7 +24,15 @@ for i in range(n):
             num_check = False
             weight_arr.append(num)
 
-boats_needed = math.ceil(sum(weight_arr)/m)
 
+
+one_place_weight = m / 2
+one_boat_needed = 0
+
+for i in range(len(weight_arr)):
+    if weight_arr[i] > one_place_weight:
+        one_boat_needed += 1
+boats_needed = math.ceil(((len(weight_arr)) - one_boat_needed) / 2)
+boats_needed += one_boat_needed 
 print(f"Необходимое минимальное число лодок: {boats_needed}")
 
