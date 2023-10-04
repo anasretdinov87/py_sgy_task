@@ -1,13 +1,12 @@
-def rev(ls):    
+def shift(ls):    
     if len(ls) == 1:        
         return ls
     else:
-        for i in range(int(len(ls)/2)):
-            tmp = ls[i]
-            ls[i] = ls[len(ls) - (i + 1)]
-            ls[len(ls) - (i + 1)] = tmp
+        tmp = ls[-1]
+        for i in range(int(len(ls))-1, 0, -1):            
+           ls[i]=ls[i-1]
+        ls[0] = tmp    
         return ls
-
 
 count_check = True
 
@@ -29,4 +28,4 @@ for i in range(n):
 print("N чисел: ")
 print(arr) 
 print("Измененный массив:")         
-print(rev(arr))
+print(shift(arr))
