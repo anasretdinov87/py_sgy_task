@@ -11,8 +11,8 @@ while check_nums:
     print(f"Введите через пробел числа, количество - {n} (Числа не должны превышать 2*10e9 по модулю):")
     nums_arr = input().split(' ')
     check_errors = True
-    if len(nums_arr) < n:
-        print("Ошибка. Недостаточно чисел. Повторите ввод.")
+    if len(nums_arr) < n or len(nums_arr) > n:
+        print("Ошибка. Неверное число чисел. Повторите ввод.")
         check_errors = False
     else:
         for i in range(len(nums_arr)):
