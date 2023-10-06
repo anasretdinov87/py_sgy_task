@@ -6,7 +6,14 @@ while count_num1_check:
     if len(nums1_arr) > 100000:
         print("Ошибка. Превышен лимит количества чисел. Повторите ввод.")
     else:
-        count_num1_check = False
+         count_num1_check = False
+         for i in range(len(nums1_arr)):
+            if not nums1_arr[i].isnumeric():
+                print(f"Ошибка. Введено не число. Повторите ввод")
+                count_num1_check = True
+                break
+                        
+    
 
 nums1_set = set(nums1_arr)
 
@@ -19,6 +26,11 @@ while count_num2_check:
         print("Ошибка. Превышен лимит количества чисел. Повторите ввод.")
     else:
         count_num2_check = False
+        for i in range(len(nums2_arr)):
+            if not nums2_arr[i].isnumeric():
+                print(f"Ошибка. Введено не число. Повторите ввод")
+                count_num2_check = True
+                break
 
 nums2_set = set(nums2_arr)
 
