@@ -25,14 +25,37 @@ for i in range(n):
             weight_arr.append(num)
 
 
+is_sorted = True
+counter = 1
+iter = 0
+for i in range(len(weight_arr)):
+    for j in range(len(weight_arr) - 1):
+        iter += 1
+        if weight_arr[j] < weight_arr[j + 1]:
+            is_sorted = False
+            temp = weight_arr[j]
+            weight_arr[j] = weight_arr[j + 1]
+            weight_arr[j + 1] = temp
+    counter += 1
+    if is_sorted:
+        break
+    else:
+        is_sorted = True
 
-one_place_weight = m / 2
-one_boat_needed = 0
+boats_free_weight_arr = [m] * n
+boats_free_place = [2] * n
 
 for i in range(len(weight_arr)):
-    if weight_arr[i] > one_place_weight:
-        one_boat_needed += 1
-boats_needed = math.ceil(((len(weight_arr)) - one_boat_needed) / 2)
-boats_needed += one_boat_needed 
-print(f"Необходимое минимальное число лодок: {boats_needed}")
+    for j in range(len(boats_free_place)):
+        if boats_free_place[j] > 0:
+            if boats_free_weight_arr[j] >= weight_arr[i]:
+                boats_free_weight_arr[j] = boats_free_weight_arr[j] - weight_arr[i]
+                boats_free_place[j] -= 1
+                break
 
+boats_needed = 0
+for i in range(len(boats_free_place)):
+        if boats_free_place[i] != 2:
+            boats_needed += 1
+
+print(f"Необходимое минимальное число лодок: {boats_needed}")
