@@ -5,7 +5,7 @@ while nums_check:
     nums_arr = input().split(' ')
     for i in range(len(nums_arr)):
         nums_check = False
-        if not nums_arr[i].isnumeric():
+        if not nums_arr[i].replace('-','').replace('.','').isdigit():
             print("Ошибка. Введено не число. Повторите ввод.")
             nums_check = True
             break

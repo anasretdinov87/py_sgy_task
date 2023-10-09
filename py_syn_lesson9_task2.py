@@ -8,7 +8,7 @@ while count_num1_check:
     else:
          count_num1_check = False
          for i in range(len(nums1_arr)):
-            if not nums1_arr[i].isnumeric():
+            if not nums1_arr[i].replace('-','').replace('.','').isdigit():
                 print(f"Ошибка. Введено не число. Повторите ввод")
                 count_num1_check = True
                 break
@@ -27,7 +27,7 @@ while count_num2_check:
     else:
         count_num2_check = False
         for i in range(len(nums2_arr)):
-            if not nums2_arr[i].isnumeric():
+            if not nums2_arr[i].replace('-','').replace('.','').isdigit():
                 print(f"Ошибка. Введено не число. Повторите ввод")
                 count_num2_check = True
                 break
