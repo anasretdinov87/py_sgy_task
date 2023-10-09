@@ -1,9 +1,11 @@
 def year_string(age):
-    if age % 10 == 1:
+    if age % 100 >= 11 and age % 100 <= 19:
+       return str(age) + ' лет'  
+    elif age % 10 == 1:
         return str(age) + ' год'
     elif age % 10 == 0:
         return str(age) + ' лет'
-    elif age % 10 < 5:
+    elif age % 10 > 1 and age % 10 < 5:
         return str(age) + ' года'
     else:
         return str(age) + ' лет'
