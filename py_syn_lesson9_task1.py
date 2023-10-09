@@ -16,7 +16,7 @@ while check_nums:
     check_nums = True
     check_errors = True 
     for i in range(len(nums_arr)):
-        if not nums_arr[i].isnumeric():
+        if not nums_arr[i].replace('-','').replace('.','').isdigit():
             print(f"Ошибка. Введено не число. Повторите ввод")
             check_errors = False
             break
@@ -26,7 +26,7 @@ while check_nums:
             check_errors = False
         else:
             for i in range(len(nums_arr)):
-                if abs(int(nums_arr[i])) > 2*10e9:
+                if abs(float(nums_arr[i])) > 2*10e9:
                     print(f"Ошибка. Число номер {i + 1} по модулю превышает 2*10е9. Повторите ввод")
                     check_errors = False
                     break
