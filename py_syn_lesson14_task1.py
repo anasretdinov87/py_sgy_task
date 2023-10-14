@@ -4,7 +4,7 @@ def ls_recur(n):
     if n == len(my_list):
         print('Конец списка')
         return
-    print(str(my_list[n]) + ' ')
+    print(str(my_list[n]), end=' ')
     ls_recur(n + 1)
 
 ls_recur(0)
