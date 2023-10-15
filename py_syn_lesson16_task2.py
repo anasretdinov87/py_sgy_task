@@ -23,7 +23,7 @@ class turtle(object):
         if dist_x % self.s == 0 and dist_y % self.s == 0:
             print(f'Минимальное количество действий, чтобы добраться: {int((dist_x + dist_y) / self.s)}')
         else: 
-            raise Exception(f'При шаге {self.s} точка {x2}:{y2} от текущих координат не будет достигнута')    
+            raise Exception(f'При шаге {self.s} в точке {x2}:{y2} в расчете от текущих координат объект не сможет остановиться.')    
     def current_coordinates(self):
         print(f'x:{self.x}:y:{self.y}')
 
