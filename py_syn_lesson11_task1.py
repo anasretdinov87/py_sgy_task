@@ -1,9 +1,15 @@
 def fact(n):
+    res = 1
+    for i in range(n , 0, -1):
+        res = res * i
+    return res
+
+
+def fact_list(n):
     fact_arr = []
-    for i in range(n, 0, -1):
-       res = i
-       for j in range(i - 1, 0, -1):
-            res = res * j
+    n_fact = fact(n)
+    for i in range(n_fact, 0, -1):
+       res = fact(i)
        fact_arr.append(res)  
     print(fact_arr)  
 
@@ -18,4 +24,4 @@ while check_num:
         continue
     n = int(n)
 
-fact(n)
+fact_list(n)
