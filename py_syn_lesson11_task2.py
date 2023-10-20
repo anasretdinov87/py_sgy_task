@@ -118,10 +118,21 @@ def update():
         pet_new_owner = input()
         pets[id][pet_new_name]['pet_owner'] = pet_new_owner
 
+def delete():
+    pets_list()
+    print('Введите ID для удаления:')
+    id = input()
+    if not get_pet(id):
+        print('ID не существует') 
+    else:
+        id = int(id)
+        pets.pop(id)
+        print('Удалено')
+
 
 command = ''
 while command != 'stop':
-    print('Введите команду: create - новая запись, read - показать информацию о питомце, update - обновить информацию, stop - завершить')
+    print('Введите команду: create - новая запись, read - показать информацию о питомце, update - обновить информацию, delete - удалить запись, stop - завершить')
     command = input()
     if command == 'create':
         create()
@@ -129,6 +140,8 @@ while command != 'stop':
         read()
     elif command == 'update':
         update()
+    elif command == 'delete':
+        delete()
     elif command == 'stop':
         break
     else:
