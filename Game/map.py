@@ -41,7 +41,11 @@ class Map:
             for ci in range(self.w):
                 if randbool(r, mxr):
                     self.cells[ri][ci] = 1
-    #def generate_tree(self):
+    def generate_tree(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if (self.check_bounds(cx, cy) and self.cells[cx][cy] == 0):
+            self.cells[cx][cy] = 1
     def print_map(self):
         print('⬛ ' * (self.w + 2))
         for row in self.cells:
