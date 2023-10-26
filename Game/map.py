@@ -41,6 +41,7 @@ class Map:
             for ci in range(self.w):
                 if randbool(r, mxr):
                     self.cells[ri][ci] = 1
+    #def generate_tree(self):
     def print_map(self):
         print('⬛ ' * (self.w + 2))
         for row in self.cells:
@@ -75,7 +76,3 @@ class Map:
         self.cells = [[0 for i in range(w)] for j in range(h)]
 
 
-tmp = Map(9, 10)
-tmp.generate_forest(3, 10)
-tmp.generate_river(10)
-tmp.print_map()
