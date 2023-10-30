@@ -10,6 +10,8 @@ from utils import randcell2
 #5 - fire 🔥
 
 CELL_TYPES = "🟩🌲🌊🏥🏫🔥"
+TREE_BONUS = 100
+UPGRADE_COST = 5000
 
 class Map:  
 
@@ -17,6 +19,11 @@ class Map:
         self.w = w
         self.h = h
         self.cells = [[0 for i in range(w)] for j in range(h)]
+        self.generate_forest(3, 10)
+        self.generate_river(10)
+        self.generate_river(10)
+        self.generate_upgrade_shop()
+
 
     def check_bounds(self, x, y):
         if(x < 0 or y < 0 or x >= self.h or y >= self.w):
@@ -80,8 +87,17 @@ class Map:
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
         if self.cells[cx][cy] == 0:
-            self.cells[cx][cy] = 1   
-
+            self.cells[cx][cy] = 1  
+    def generate_upgrade_shop(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if (self.cells[cx][cy] == 0):      
+             self.cells[cx][cy] = 4
+    def generate_hospital(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if (self.cells[cx][cy] == 0):      
+             self.cells[cx][cy] = 3
     def add_fire(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
@@ -94,12 +110,25 @@ class Map:
                 cell = self.cells[ri][ci]
                 if cell == 5:
                     self.cells[ri][ci] = 0
-        self.add_fire()
-        self.add_fire()
-        self.add_fire()
-        self.add_fire()
-        self.add_fire()
+        for i in range(10):
+            self.add_fire()
+       
 
+    def process_helicopter(self, helico):
+        c = self.cells[helico.x][helico.y]
+        if (c == 2):
+            helico.tank = helico.mxtank
+        if (c == 5 and helico.tank > 0):
+            helico.tank -= 1
+            helico.score += TREE_BONUS
+            self.cells[helico.x][helico.y] = 1
+        if (c == 4 and helico.score >= UPGRADE_COST):
+            helico.mxtank += 1
+            helico.score  -= UPGRADE_COST
+        if (c == 3 and helico.score >= LIVE_COST):
+            helico.lives += 1
+            helico.score  -= LIVE_COST
+        
 
   
        

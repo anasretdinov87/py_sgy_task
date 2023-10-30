@@ -1,43 +1,43 @@
 #🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆⚡☁️
-
+goto game 5 -35:55
 from map import Map
 import time
 import os
 from helicopter import Helicopter as Helico
 from pynput import keyboard
 
-TICK_SLEEP = 1
+TICK_SLEEP = 0.05
 TREE_UPDATE = 50
 FIRE_UPDATE = 100
 MAP_W, MAP_H = 20, 10
 
 field = Map(MAP_W, MAP_H)
-field.generate_forest(3, 10)
-field.generate_river(10)
-field.generate_river(10)
 
 
 helico = Helico(MAP_W, MAP_H)
 
+MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
 def process_key(key):
-    print(key)
-    if key.char == 'a' or key.char == 'A':
-        print("Cool")
-    # if key == keyboard.Key.esc:
-    #     # Stop listener
-    #     return False
+    global helico
+    c = key.char.lower()
+    if c in MOVES.keys():
+        dx, dy = MOVES[c][0], MOVES[c][1]
+        helico.move(dx, dy) 
+
 
 listener = keyboard.Listener(
     on_press=None,
-    on_release=process_key)
+    on_release=process_key,)
 listener.start()
 
 tick = 1
 
 while True:
-    os.system("clear")
-    print("TICK", tick)
-    field.print_map(helico)
+    os.system("clear")    
+    field.process_helicopter(helico)
+    helico.print_stats()
+    field.print_map(helico)  
+    print("TICK", tick)  
     tick += 1
     time.sleep(TICK_SLEEP)
     if (tick % TREE_UPDATE == 0):
