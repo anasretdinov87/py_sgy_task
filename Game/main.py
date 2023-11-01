@@ -1,18 +1,21 @@
-#🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆⚡☁️
-goto game 5 -35:55
+#🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆🌫🌧⛈⬜🟥
+go to game 5 -9:48
+
 from map import Map
 import time
 import os
 from helicopter import Helicopter as Helico
+from clouds import Clouds
 from pynput import keyboard
 
 TICK_SLEEP = 0.05
 TREE_UPDATE = 50
 FIRE_UPDATE = 100
+CLOUDS_UPDATE = 100
 MAP_W, MAP_H = 20, 10
 
 field = Map(MAP_W, MAP_H)
-
+clouds = Clouds(MAP_W, MAP_H)
 
 helico = Helico(MAP_W, MAP_H)
 
@@ -34,9 +37,9 @@ tick = 1
 
 while True:
     os.system("clear")    
-    field.process_helicopter(helico)
+    field.process_helicopter(helico, clouds)
     helico.print_stats()
-    field.print_map(helico)  
+    field.print_map(helico, clouds)  
     print("TICK", tick)  
     tick += 1
     time.sleep(TICK_SLEEP)
@@ -44,3 +47,5 @@ while True:
         field.generate_tree()
     if (tick % FIRE_UPDATE == 0):
         field.update_fires()
+    if (tick % CLOUDS_UPDATE == 0):
+        clouds.update()
