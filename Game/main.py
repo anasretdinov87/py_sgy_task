@@ -1,5 +1,5 @@
 #🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆🌫🌧⛈⬜🟥
-
+go to game 6
 
 from map import Map
 import time
@@ -10,7 +10,7 @@ from pynput import keyboard
 
 TICK_SLEEP = 0.05
 TREE_UPDATE = 50
-FIRE_UPDATE = 100
+FIRE_UPDATE = 75
 CLOUDS_UPDATE = 100
 MAP_W, MAP_H = 20, 10
 

@@ -22,7 +22,7 @@ class Map:
         self.w = w
         self.h = h
         self.cells = [[0 for i in range(w)] for j in range(h)]
-        self.generate_forest(3, 10)
+        self.generate_forest(5, 10)
         self.generate_river(10)
         self.generate_river(10)
         self.generate_upgrade_shop()

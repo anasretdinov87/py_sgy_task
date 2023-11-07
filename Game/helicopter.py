@@ -26,9 +26,9 @@ class Helicopter:
             
     def game_over(self):
         os.system("clear")
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        print("                                ")
-        print("GAME OVER, YOUR SCORE IS", self.score)
-        print("                                ")
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        print("X                                        X")
+        print("X     GAME OVER, YOUR SCORE IS", self.score, "      X")
+        print("X                                        X")
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         exit(0)
