@@ -1,5 +1,5 @@
 #🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆🌫🌧⛈⬜🟥
-go to game 5 -9:48
+
 
 from map import Map
 import time
@@ -18,6 +18,7 @@ field = Map(MAP_W, MAP_H)
 clouds = Clouds(MAP_W, MAP_H)
 
 helico = Helico(MAP_W, MAP_H)
+
 
 MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
 def process_key(key):

@@ -1,7 +1,8 @@
 from utils import randbool
 from utils import randcell
 from utils import randcell2
-from clouds import Clouds
+#from clouds import Clouds
+
 
 #0 - field
 #1 - tree
@@ -26,7 +27,7 @@ class Map:
         self.generate_river(10)
         self.generate_upgrade_shop()
         self.generate_hospital()
-        self.clouds = Clouds(w, h)
+        #self.clouds = Clouds(w, h)
 
 
     def check_bounds(self, x, y):
@@ -141,9 +142,9 @@ class Map:
             helico.score  -= LIVE_COST
         if (d == 2):
             helico.lives -= 1
-            if (helico.lives == 0):
-                print("GAME OVER, YOUR SCORE IS", helico.score)
-                exit(0)
+            if (helico.lives == 0): 
+                helico.game_over()              
+
         
 
   
