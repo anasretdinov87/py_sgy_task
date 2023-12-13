@@ -3,7 +3,6 @@ from utils import randcell
 from utils import randcell2
 #from clouds import Clouds
 
-
 #0 - field
 #1 - tree
 #2 - river
@@ -28,7 +27,6 @@ class Map:
         self.generate_upgrade_shop()
         self.generate_hospital()
         #self.clouds = Clouds(w, h)
-
 
     def check_bounds(self, x, y):
         if(x < 0 or y < 0 or x >= self.h or y >= self.w):
@@ -143,7 +141,10 @@ class Map:
         if (d == 2):
             helico.lives -= 1
             if (helico.lives == 0): 
-                helico.game_over()              
+                helico.game_over()       
+                
+    def export_data(self):
+        return {"cells": self.cells}       
 
         
 

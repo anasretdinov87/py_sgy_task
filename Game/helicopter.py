@@ -26,9 +26,31 @@ class Helicopter:
             
     def game_over(self):
         os.system("clear")
+        total_score = str(self.score)
+        if len(total_score) == 1:
+            total_score = total_score + "         X"
+        elif len(total_score) == 2:
+            total_score = total_score + "        X"
+        elif len(total_score) == 3:
+            total_score = total_score + "       X"
+        elif len(total_score) == 4:
+            total_score = total_score + "      X"    
+        elif len(total_score) == 5:
+            total_score = total_score + "     X"   
+        elif len(total_score) == 6:
+            total_score = total_score + "    X"         
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         print("X                                        X")
-        print("X     GAME OVER, YOUR SCORE IS", self.score, "      X")
+        print("X     GAME OVER, YOUR SCORE IS", total_score)
         print("X                                        X")
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         exit(0)
+        
+    def export_data(self):
+        return {"score": self.score,
+                "lives": self.lives,
+                "x": self.x, "y":self.y,
+                "tank": self.tank,
+                "mxtank": self.mxtank}
+        
+ 

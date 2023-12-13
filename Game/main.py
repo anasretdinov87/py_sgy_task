@@ -1,9 +1,9 @@
 #🌲🌊🚁🟩🔥🏥💛🛢️🏫🏆🌫🌧⛈⬜🟥
-go to game 6
 
 from map import Map
 import time
 import os
+import json
 from helicopter import Helicopter as Helico
 from clouds import Clouds
 from pynput import keyboard
@@ -16,25 +16,31 @@ MAP_W, MAP_H = 20, 10
 
 field = Map(MAP_W, MAP_H)
 clouds = Clouds(MAP_W, MAP_H)
-
 helico = Helico(MAP_W, MAP_H)
-
+tick = 1
 
 MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
+# f - save, g - restore
 def process_key(key):
-    global helico
+    global helico, tick, clouds, field
     c = key.char.lower()
     if c in MOVES.keys():
         dx, dy = MOVES[c][0], MOVES[c][1]
         helico.move(dx, dy) 
-
-
+    elif c == 'f':
+        data = {"helicopter": helico.export_data(), 
+                "clouds": clouds.export_data(),
+                "field": field.export_data(),
+                "tick": tick}
+        with open("level.json","w") as lvl:
+            json.dump(data, lvl)
+    elif c == 'g':
+        with open("level.json")
+            
 listener = keyboard.Listener(
     on_press=None,
     on_release=process_key,)
 listener.start()
-
-tick = 1
 
 while True:
     os.system("clear")    

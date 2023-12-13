@@ -15,4 +15,7 @@ class Clouds:
                         self.cells[i][j] = 2
                 else:
                     self.cells[i][j] = 0
+    
+    def export_data(self):
+        return {"cells": self.cells}
                 
